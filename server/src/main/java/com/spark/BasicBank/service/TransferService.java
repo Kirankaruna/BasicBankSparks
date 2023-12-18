@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 @Service
 public class TransferService {
     private final TransferRepository transferRepository;
@@ -21,8 +21,6 @@ public class TransferService {
 
     Transfer transfer;
     List<Transfer> transferList;
-
-
     public TransferService(TransferRepository transferRepository) {
         this.transferRepository = transferRepository;
     }
@@ -30,6 +28,8 @@ public class TransferService {
     public List<Transfer> viewTransfers() {
         transferList = new ArrayList<>();
         transferList = transferRepository.findAll();
+        Collections.sort(transferList, Comparator.comparing(Transfer::getDate).reversed());
+
         return transferList;
     }
 
