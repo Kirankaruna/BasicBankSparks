@@ -4,7 +4,6 @@ import axios from "axios";
 // import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 import './NewTransfer.css'
-import _ from 'lodash';
 
 const ViewAllTrfr = () => {
   const base_url = process.env.REACT_APP_API_PATH || "";
@@ -16,8 +15,7 @@ const ViewAllTrfr = () => {
 
   useEffect(() => {
     axios.get(`${base_url}/transfer/viewall`).then((response) => {
-      const sortedTransfers = _.sortBy(response.data, (transfer) => new Date(transfer.createdAt)).reverse();  
-      setTransfers(sortedTransfers);
+      setTransfers(response.data);
     })
   });
 
