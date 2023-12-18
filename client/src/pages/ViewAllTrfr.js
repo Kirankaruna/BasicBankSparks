@@ -15,7 +15,7 @@ const ViewAllTrfr = () => {
 
   useEffect(() => {
     axios.get(`${base_url}/transfer/viewall`).then((response) => {
-      setTransfers(response.data);
+      setTransfers(response.data.reverse());
     })
   });
 
