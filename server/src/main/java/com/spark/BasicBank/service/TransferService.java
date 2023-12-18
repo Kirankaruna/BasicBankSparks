@@ -28,8 +28,6 @@ public class TransferService {
     public List<Transfer> viewTransfers() {
         transferList = new ArrayList<>();
         transferList = transferRepository.findAll();
-        Collections.sort(transferList, Comparator.comparing(Transfer::getDate).reversed());
-
         return transferList;
     }
 
