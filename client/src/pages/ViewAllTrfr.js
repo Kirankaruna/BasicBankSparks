@@ -14,7 +14,12 @@ const ViewAllTrfr = () => {
 
   useEffect(() => {
     axios.get(`${base_url}/transfer/viewall`).then((response) => {
-        setTransfers(response.data);
+        const sortedTransfers = response.data.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateB - dateA;
+          });
+        setTransfers(sortedTransfers);
     })
   });
 
