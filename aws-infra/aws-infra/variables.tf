@@ -19,7 +19,7 @@ variable "tags" {
 # ---- VPC ----
 variable "vpc_cidr" {
   type    = string
-  default = "10.0.0.0/16"
+  default = "10.1.0.0/16"
 }
 
 variable "az_count" {
@@ -45,5 +45,5 @@ variable "enable_nat_gateway" {
 variable "single_nat_gateway" {
   description = "true = one shared NAT (cheaper); false = one per AZ (HA)"
   type        = bool
-  default     = true
+  default     = false
 }
