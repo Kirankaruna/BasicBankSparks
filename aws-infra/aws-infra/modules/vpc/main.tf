@@ -25,6 +25,7 @@ module "vpc" {
 
   enable_nat_gateway   = var.enable_nat_gateway
   single_nat_gateway   = var.single_nat_gateway
+  one_nat_per_az       = !var.single_nat_gateway # when not single, 1 NAT per AZ (not per subnet)
   enable_dns_hostnames = true
   enable_dns_support   = true
 
